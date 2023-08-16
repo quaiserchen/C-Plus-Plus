@@ -16,6 +16,8 @@ int main(int argc, char* argv[])
   dieter.setVorname("Dieter");
   dieter.setGehalt(5);
 
+  //test
+
   cout << "Name: " << dieter.getVorname() << " " << dieter.getName() << ", Gehalt: " << dieter.getGehalt() <<endl;
 
   // Warten auf Tastendruck
