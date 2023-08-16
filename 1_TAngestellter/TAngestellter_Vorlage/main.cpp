@@ -7,14 +7,16 @@ using namespace std;
 int main(int argc, char* argv[])
 {
   // Objekt der Klasse TAngestellter erzeugen (statisch)
-  TAngestellter hans;
+  TAngestellter alex("Kaiser", "Alex", 450000);
 
-  // Gehalt von hans setzen und wieder ausgeben mittels cout.
-  hans.setGehalt(42000.00);
-  cout << "Gehalt des Angestellten Hans: " << hans.getGehalt() << endl;
-  
-  // Das geht so nicht !!! dGehalt ist private
-  //cout << "Gehalt des Angestellten Hans: " << hans.dGehalt << endl;
+  cout << "Name: " << alex.getVorname() << " " << alex.getName() << ", Gehalt: " << alex.getGehalt() <<endl;
+
+  TAngestellter dieter;
+  dieter.setName("Denker");
+  dieter.setVorname("Dieter");
+  dieter.setGehalt(5);
+
+  cout << "Name: " << dieter.getVorname() << " " << dieter.getName() << ", Gehalt: " << dieter.getGehalt() <<endl;
 
   // Warten auf Tastendruck
   getchar();
@@ -26,4 +28,4 @@ int main(int argc, char* argv[])
 
 
 
-                        
+

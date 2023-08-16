@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1692167676 source:c:\users\alexa\desktop\neuer ordner\angestellter.cpp
+	"angestellter.h"
+	<cstring>
+
+1692168214 c:\users\alexa\desktop\neuer ordner\angestellter.h
+
+1692166406 source:c:\users\alexa\desktop\neuer ordner\main.cpp
+	<iostream>
+	<stdio.h>
+	"angestellter.h"
+
+1692167676 source:c:\coding\repositories\c-plus-plus\1_tangestellter\tangestellter_vorlage\angestellter.cpp
+	"angestellter.h"
+	<cstring>
+
+1692168214 c:\coding\repositories\c-plus-plus\1_tangestellter\tangestellter_vorlage\angestellter.h
+
+1692168254 source:c:\coding\repositories\c-plus-plus\1_tangestellter\tangestellter_vorlage\main.cpp
+	<iostream>
+	<stdio.h>
+	"angestellter.h"
+
