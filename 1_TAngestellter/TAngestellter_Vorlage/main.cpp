@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
   dieter.setVorname("Dieter");
   dieter.setGehalt(5);
 
-  //test
+  //test test
 
   cout << "Name: " << dieter.getVorname() << " " << dieter.getName() << ", Gehalt: " << dieter.getGehalt() <<endl;
 
