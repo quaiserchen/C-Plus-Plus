@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1693393429 source:c:\coding\repositories\c-plus-plus\2_tdatum\tdatum\ctime.cpp
+	<iostream>
+	<iomanip>
+	<ctime>
+	<stdlib.h>
+	"datum.h"
+
+1693379078 c:\coding\repositories\c-plus-plus\2_tdatum\tdatum\datum.h
+
+1693393602 source:c:\coding\repositories\c-plus-plus\2_tdatum\tdatum\datum.cpp
+	"datum.h"
+	<ctime>
+	<stdlib.h>
+	<iostream>
+	<iomanip>
+
