@@ -122,7 +122,7 @@ bool TDatum::isLess(TDatum Datum)
     }
     else if(this->getTag() < Datum.getTag() && this->getMonat() == Datum.getMonat() && this->getJahr() == Datum.getJahr())
     {
-        true;
+        isLess = true;
     }
     return isLess;
 }
