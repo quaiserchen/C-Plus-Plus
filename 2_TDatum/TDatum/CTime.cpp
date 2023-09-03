@@ -8,72 +8,60 @@
 
 using namespace std;
 
-int compare(TDatum datum1, TDatum datum2)
+
+//Funktion, die 2 Datums miteinander vergleicht und dafür die überladenen Operatoren benutzt
+void compare(TDatum datum1, TDatum datum2)
 {
-    if(datum1.isEqual(datum2))
+    if(datum1 == datum2)
     {
-        cout << "Datum1 und Datum2 sind gleich" <<endl;
+        cout << "Das erste und das zweite Datum sind gleich" <<endl << endl;
     }
-    else if (datum1.isLess(datum2))
+    else if (datum1 < datum2)
     {
-        cout << "Datum1 ist kleiner als Datum2" <<endl;
+        cout << "Das erste Datum ist kleiner als das zweite Datum" <<endl << endl;
     }
-    else if (datum1.isMore(datum2))
+    else if (datum1 > datum2)
     {
-        cout << "Datum1 ist groesser als Datum2" << endl;
+        cout << "Das erste Datum ist groesser als das zweite Datum" << endl << endl;
     }
 }
 
+
+
 int main()
 {
-    /*Ausgabe Standartdatum
-    TDatum standart;
-    cout << "Defaultkonstruktor: ";
-    standart.getDatum();
-
-    //Ausgabe Datum Konstruktor mit Parametern
-    int iTag = 2, iMonat = 12, iJahr = 2023;
-    TDatum konstPara(iTag, iMonat, iJahr);
-    cout << endl << "Konstruktor mit Parametern: ";
-    konstPara.getDatum();
-
-    //Ausgabe Datum über Getter-Methoden
-    int iTagG = 2, iMonatG = 11, iJahrG = 1823;
-    TDatum setterdatum;
-    setterdatum.setTag(iTagG);
-    setterdatum.setMonat(iMonatG);
-    setterdatum.setJahr(iJahrG);
-    cout << endl << "Datum ueber Getter-Methoden: ";
-    setterdatum.getDatum();*/
-
+    cout << "\033[1;32m" << "TDatum von Alexander Kaiser" << "\033[0m" << endl << endl;
     //Ausgabe heutiges Datum
     TDatum heute;
     heute.setDatum();
     cout << endl << "Heutiges Datum ueber Funktion: ";
     heute.getDatum();
-    /*
-        //Ausgabe Datum über Funktion gesetzt
-        int iTagF = 12, iMonatF = 12, iJahrF = 2007;
-        TDatum funktion;
-        funktion.setDatum(iTagF, iMonatF, iJahrF);
-        cout << endl << "Bestimmtes Datum ueber Funktion: ";
-        funktion.getDatum(); */
 
-
-    int iTag1 = 2, iMonat1 = 11, iJahr1 = 2023;
-    TDatum datum1(iTag1, iMonat1, iJahr1);
+    //Datum wird mit Default-Konstruktor erzeugt
+    TDatum datum1;
     cout << endl << "Erstes Datum: ";
     datum1.getDatum();
 
-    int iTag2 = 2, iMonat2 = 11, iJahr2 = 2023;
-    TDatum datum2(iTag2, iMonat2, iJahr2);
+    //Datum wird  über Konstruktor erzeugt:
+    TDatum datum2(28, 2, 1913);
     cout << endl << "Zweites Datum: ";
     datum2.getDatum();
 
-    compare(datum1, datum2);
+    //Datum über Methode:
+    TDatum datum3;
+    datum3.setDatum(1, 9, 2001);
+    cout << endl << "Drittes Datum: ";
+    datum3.getDatum();
+
+    compare(datum2, datum3);
+
+    //ein ungültiges Datum wird gesetzt:
+    TDatum datum4(30, 2, 1875);
+    cout << endl << "Viertes Datum: ";
+    datum4.getDatum();
 
     cout << endl;
-    //system("pause");
+    system("pause");
     return 0;
 }
 

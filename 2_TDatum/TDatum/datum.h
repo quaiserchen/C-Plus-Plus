@@ -14,12 +14,7 @@ public:
     TDatum(void);
 
     //Methoden
-    int getTag();
-    void setTag(int);
-    int getMonat();
-    void setMonat(int);
-    int getJahr();
-    void setJahr(int );
+
 
     void setDatum(void);
     void setDatum(int iTag, int iMonat, int iJahr);
@@ -28,4 +23,10 @@ public:
     bool isEqual(TDatum Datum);
     bool isLess(TDatum Datum);
     bool isMore(TDatum Datum);
+
+    bool isDatumValid(int iTag, int iMonat, int iJahr);
+
+    bool operator==(TDatum Datum);
+    bool operator<(TDatum Datum);
+    bool operator>(TDatum Datum);
 };
