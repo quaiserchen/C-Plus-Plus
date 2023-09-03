@@ -1,12 +1,12 @@
-.depend
+*.depend
 
-.layout
+*.layout
 
 /bin/
 
 /obj/
 
-.exe
+*.exe
 
-.o
+*.o
 
