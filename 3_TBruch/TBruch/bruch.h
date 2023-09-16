@@ -17,10 +17,10 @@ public:
     //Konstruktor mit 2 Werten
     CBruch(long z, long n);
 
-   //Konstruktor für Double-Werte
+   //Konstruktor fï¿½r Double-Werte
    CBruch(double d);
 
-   //Funktion zum kürzen
+   //Funktion zum kï¿½rzen
    void kuerze();
 
    void getBruch();
