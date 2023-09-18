@@ -3,16 +3,48 @@
 
 using namespace std;
 
+void neueZeile(){
+    cout << endl;
+}
+
 int main()
 {
+cout << "+-------------------------------------------+" << endl;
+cout << "|     CBruch von Alexander Kaiser, AD22     |" << endl;
+cout << "+-------------------------------------------+" << endl << endl;
 
 
+//Umwandlung von double
+cout << "===== Umwandlung von double-Zahlen =====" << endl;
+CBruch ausDoubleUmgewandelt(1.25);
+cout << "Bruch aus 1.25: " << ausDoubleUmgewandelt.getBruch() << endl << endl;
 
-CBruch bruch(2, 3);
-CBruch bruch2(5, 4);
-;
+//Grundrechenarten
+cout << "===== Grundrechenarten =====" << endl;
+CBruch A(1,2);
+CBruch B(3,4);
+CBruch C;
 
-CBruch addition = bruch / bruch2;
+cout << "Bruch A: " << A.getBruch() << endl;
+cout << "Bruch B: " << B.getBruch() << endl << endl;
 
-addition.getBruch();
+C = A + B;
+cout << "C = A + B -> C  = " << C.getBruch() << endl;
+C = B - A;
+cout << "C = B - A -> C  = " << C.getBruch() << endl;
+C = A * B;
+cout << "C = A * B -> C  = " << C.getBruch() << endl;
+C = B / A;
+cout << "C = B / A -> C  = " << C.getBruch() << endl << endl;
+
+//Überladen
+cout << "===== Ueberladen =====" << endl;
+C = A + 1.5;
+cout << "C = A + 1.5 -> C  = " << C.getBruch() << endl;
+C = 3.75 - B;
+cout << "C = 3.75 + B -> C  = " << C.getBruch() << endl;
+C = 10L + B;
+cout << "C = 10(long) + B -> C  = " << C.getBruch() << endl;
+
+
 }
