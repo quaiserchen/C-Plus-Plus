@@ -1,56 +1,51 @@
 #include "bruch.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-
-//CBruch::CBruch();
-
+//Defaltkonstruktor
+CBruch::CBruch()
+{
+    zaehler = 0;
+    nenner = 0;
+}
+// Konstruktor mit 2 long int Variablen
 CBruch::CBruch(long z, long n)
 {
 
     zaehler = z;
     nenner = n;
 }
-
-CBruch::CBruch(double d) //nochmal machen!
+// wandelt double-Zahl in Bruch um
+CBruch::CBruch(double d)
 {
-
-    cout << "Double = " << d << endl;
-    zaehler = d;
     nenner = 1;
 
-    cout << static_cast<int>(zaehler) << endl;
 
-    while(zaehler != static_cast<int>(zaehler))
+    while(d != (int)d)
     {
-        cout << "d = " << d << " nenner = " << nenner << endl;
         d *= 10;
         nenner *= 10;
     }
 
     zaehler = d;
-}
 
+    // kürzt direkt den Bruch
+    int teiler = ggt(zaehler, nenner);
+    zaehler /= teiler;
+    nenner /= teiler;
+}
+// zum Kürzen von Brüchen
 void CBruch::kuerze()
 {
 
-    long x = zaehler;
-    long y = nenner;
-    int c;
-    if ( x < 0 ) x = -x;
-    if ( y < 0 ) y = -y;
-    while ( y != 0 )
-    {
-        c = x % y;
-        x = y;
-        y = c;
-    }
-    this->zaehler = this->zaehler/x;
-    this->nenner = this->nenner/x;
+    int teiler = ggt(this->zaehler, this->nenner);
+    this->zaehler = this->zaehler/teiler;
+    this->nenner = this->nenner/teiler;
 }
 
-int ggt(long x, long y)
+int CBruch::ggt(long x, long y)
 {
     int c;
     if ( x < 0 ) x = -x;
@@ -63,13 +58,14 @@ int ggt(long x, long y)
     }
     return x;
 }
-
-void CBruch::getBruch()
+// gibt String des Bruches für die Ausgabe zurück
+std::string CBruch::getBruch()
 {
+    std::string bruchString = std::to_string(zaehler) + "/" + std::to_string(nenner);
 
-    cout << zaehler << "/" << nenner ;
+    return bruchString;
 }
-
+// CBruch + CBruch
 CBruch CBruch::operator+(CBruch Bruch)
 {
     int tempNenner = this->nenner * Bruch.nenner;
@@ -82,7 +78,7 @@ CBruch CBruch::operator+(CBruch Bruch)
     tempBruch.kuerze();
     return tempBruch;
 }
-
+// Cbruch - CBruch
 CBruch CBruch::operator-(CBruch Bruch)
 {
     int tempNenner = this->nenner * Bruch.nenner;
@@ -95,7 +91,7 @@ CBruch CBruch::operator-(CBruch Bruch)
     tempBruch.kuerze();
     return tempBruch;
 }
-
+// CBruch * CBruch
 CBruch CBruch::operator*(CBruch Bruch)
 {
     int tempZaehler = this->zaehler * Bruch.zaehler;
@@ -104,7 +100,7 @@ CBruch CBruch::operator*(CBruch Bruch)
     tempBruch.kuerze();
     return tempBruch;
 }
-
+// CBruch / CBruch
 CBruch CBruch::operator/(CBruch Bruch)
 {
     int tempZaehler = this->zaehler * Bruch.nenner;
@@ -113,3 +109,133 @@ CBruch CBruch::operator/(CBruch Bruch)
     tempBruch.kuerze();
     return tempBruch;
 }
+// CBruch + double
+CBruch CBruch::operator+(double d)
+{
+    CBruch tempDoubleZuBruch(d);
+    CBruch ergebnis = *this + tempDoubleZuBruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// double + CBruch
+CBruch operator+(double d, const CBruch &bruch)
+{
+    CBruch tempDoubleZuBruch(d);
+    CBruch ergebnis = tempDoubleZuBruch + bruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// CBruch * double
+CBruch CBruch::operator-(double d)
+{
+    CBruch tempDoubleZuBruch(d);
+    CBruch ergebnis = *this - tempDoubleZuBruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// double - CBruch
+CBruch operator-(double d, const CBruch &bruch)
+{
+    CBruch tempDoubleZuBruch(d);
+    CBruch ergebnis = tempDoubleZuBruch - bruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// CBruch * double
+CBruch CBruch::operator*(double d)
+{
+    CBruch tempDoubleZuBruch(d);
+    CBruch ergebnis = *this * tempDoubleZuBruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// double * CBruch
+CBruch operator*(double d, const CBruch &bruch)
+{
+    CBruch tempDoubleZuBruch(d);
+    CBruch ergebnis = tempDoubleZuBruch * bruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// CBruch / double
+CBruch CBruch::operator/(double d)
+{
+    CBruch tempDoubleZuBruch(d);
+    CBruch ergebnis = *this / tempDoubleZuBruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// double / CBruch
+CBruch operator/(double d, const CBruch &bruch)
+{
+    CBruch tempDoubleZuBruch(d);
+    CBruch ergebnis = tempDoubleZuBruch / bruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// CBruch + long
+CBruch CBruch::operator+(long l)
+{
+    CBruch tempLongZuBruch(l, 1);
+    CBruch ergebnis = *this + tempLongZuBruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// long + CBruch
+CBruch operator+(long l, const CBruch &bruch)
+{
+    CBruch tempLongZuBruch(l, 1);
+    CBruch ergebnis = tempLongZuBruch + bruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// CBruch - long
+CBruch CBruch::operator-(long l)
+{
+    CBruch tempLongZuBruch(l, 1);
+    CBruch ergebnis = *this - tempLongZuBruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// long - CBruch
+CBruch operator-(long l, const CBruch &bruch)
+{
+    CBruch tempLongZuBruch(l, 1);
+    CBruch ergebnis = tempLongZuBruch - bruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// CBruch * long
+CBruch CBruch::operator*(long l)
+{
+    CBruch tempLongZuBruch(l, 1);
+    CBruch ergebnis = *this * tempLongZuBruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// long * CBruch
+CBruch operator*(long l, const CBruch &bruch)
+{
+    CBruch tempLongZuBruch(l, 1);
+    CBruch ergebnis = tempLongZuBruch * bruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// CBruch / long
+CBruch CBruch::operator/(long l)
+{
+    CBruch tempLongZuBruch(l, 1);
+    CBruch ergebnis = *this / tempLongZuBruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+// long / CBruch
+CBruch operator/(long l, const CBruch &bruch)
+{
+    CBruch tempLongZuBruch(l, 1);
+    CBruch ergebnis = tempLongZuBruch / bruch;
+    ergebnis.kuerze();
+    return ergebnis;
+}
+
+
