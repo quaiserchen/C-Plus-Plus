@@ -6,7 +6,15 @@
 
 /obj/
 
+/idea
+
 *.exe
 
 *.o
+
+*.layout
+
+*.win
+
+.vscode
 

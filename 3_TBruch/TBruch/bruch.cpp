@@ -1,3 +1,4 @@
+//Methoden für TBruch, Alexander Kaiser, AD22
 #include "bruch.h"
 #include <iostream>
 #include <string>
@@ -13,7 +14,6 @@ CBruch::CBruch()
 // Konstruktor mit 2 long int Variablen
 CBruch::CBruch(long z, long n)
 {
-
     zaehler = z;
     nenner = n;
 }
@@ -21,7 +21,6 @@ CBruch::CBruch(long z, long n)
 CBruch::CBruch(double d)
 {
     nenner = 1;
-
 
     while(d != (int)d)
     {
@@ -39,7 +38,6 @@ CBruch::CBruch(double d)
 // zum Kürzen von Brüchen
 void CBruch::kuerze()
 {
-
     int teiler = ggt(this->zaehler, this->nenner);
     this->zaehler = this->zaehler/teiler;
     this->nenner = this->nenner/teiler;
@@ -62,7 +60,10 @@ int CBruch::ggt(long x, long y)
 std::string CBruch::getBruch()
 {
     std::string bruchString = std::to_string(zaehler) + "/" + std::to_string(nenner);
-
+    if(nenner == 1)
+    {
+        bruchString += ", entspricht " + std::to_string(zaehler);
+    }
     return bruchString;
 }
 // CBruch + CBruch

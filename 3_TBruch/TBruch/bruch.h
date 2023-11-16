@@ -1,4 +1,4 @@
-//Klasse TBruch
+//Klasse TBruch, Alexander Kaiser, AD22
 
 #include <string>
 
@@ -56,7 +56,7 @@ public:
     CBruch operator*(double d, const CBruch &bruch);
     CBruch operator/(double d, const CBruch &bruch);
 
-// überschreibt Operatoren für double -> +-*/ -> CBruch
+// überschreibt Operatoren für long -> +-*/ -> CBruch
     CBruch operator+(long l, const CBruch &bruch);
     CBruch operator-(long l, const CBruch &bruch);
     CBruch operator*(long l, const CBruch &bruch);
