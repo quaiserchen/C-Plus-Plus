@@ -16,5 +16,7 @@
 
 *.win
 
-.vscode
+*.vscode
+
+*.pdf
 
