@@ -94,7 +94,7 @@ CBruch wandleStringUm(string e)
     return fehlerBeimUmwandeln;
 }
 
-int main()
+bool pruefeEingabe(string e)
 {
     cout << "+-------------------------------------------+" << endl;
     cout << "|     CBruch von Alexander Kaiser, AD22     |" << endl;
@@ -217,4 +217,135 @@ int main()
         cout << endl << "Ungueltige Eingabe!!!" << endl;
         break;
     }
+}
+
+CBruch wandleEingabeUm(string e)
+{
+    if (regex_match(e, patternBruch))
+    {
+        size_t positionVomBruchStrich = e.find('/');
+        long int z, n;
+        if(positionVomBruchStrich != string::npos){
+            z = stol(e.substr(0, positionVomBruchStrich));
+            n = stol(e.substr(positionVomBruchStrich + 1));
+            CBruch stringZuBruch(z, n);
+            return stringZuBruch ;
+        }
+    }
+    else if(regex_match(e, patternDouble))
+    {
+        double stringZuDouble = stold(e);
+        CBruch stringZuBruch(stringZuDouble);
+        return stringZuBruch;
+
+    }
+    else if(regex_match(e, patternLongInt))
+    {
+        double stringZuLongInt = stol(e);
+        CBruch stringZuBruch(stringZuLongInt);
+        return stringZuBruch;
+
+    }
+}
+
+
+
+int main()
+{
+    cout << "+-------------------------------------------+" << endl;
+    cout << "|     CBruch von Alexander Kaiser, AD22     |" << endl;
+    cout << "+-------------------------------------------+" << endl << endl;
+
+    char funktionsauswahl;
+    cout << "Bitte Auswaehlen:" << endl << "1. Ausgabe der Notiz aus der Aufgabenstellung" << endl << "2. Umwandeln von String zu Bruch" << endl << "3. Brueche eingeben und Rechenoperation ausfuehren" << endl << "4. Programm  Beenden" << endl << endl << "Auswahl: ";
+    cin >> funktionsauswahl;
+
+    switch(funktionsauswahl){
+    case '1':
+        break;
+    case '2':
+        break;
+    case '3':
+        break;
+    case '4':
+        return 0;
+    default:
+        cout << endl << "ungueltige Eingabe!!!" << endl;
+        break;
+    }
+
+
+    //zeigeNotitzZettelAn();
+
+    //Nutzereingabe
+    cout << "===== Nutzereingabe =====" << endl;
+    string wert1string, wert2string;
+    bool string1ok = false, string2ok = false;
+    char bruchrechner;
+
+while(string1ok == false){
+    cout << "Bitte geben sie den ersten Wert ein(eine ganze Zahl, eine Kommazahl oder Bruch 'X/X'): ";
+    cin >> wert1string;
+    string1ok = pruefeEingabe(wert1string);
+    if(string1ok == false){
+        cout << endl << "UNGUELTIGE EINGABE!!!" << endl;
+    } else {
+        cout << endl << "Der eingegebene erste Wert lautet: " << wert1string << endl;
+    }
+}
+
+while(string2ok == false){
+    cout << "Bitte geben sie den zweiten Wert ein(eine ganze Zahl, eine Kommazahl oder Bruch 'X/X'): ";
+    cin >> wert2string;
+    string2ok = pruefeEingabe(wert2string);
+    if(string2ok == false){
+        cout << endl << "UNGUELTIGE EINGABE!!!" << endl;
+    } else {
+        cout << endl << "Der eingegebene zweite Wert lautet: " << wert2string << endl;
+    }
+}
+
+    while(true)
+    {
+        cout << "Bitte die gewuenschte Rechenoperation auswählen (+, -, *, /) oder 'E'/'e' um das Menue zu verlassen: ";
+        cin >> bruchrechner;
+
+        CBruch wert1Bruch = wandleEingabeUm(wert1string);
+        CBruch wert2Bruch = wandleEingabeUm(wert2string);
+        CBruch ergebnisBruch;
+
+        switch(bruchrechner)
+        {
+        case '+':
+            ergebnisBruch = wert1Bruch + wert2Bruch;
+            ergebnisBruch.kuerze();
+            cout << wert1string << " + " << wert2string << " = " << ergebnisBruch.getBruch() << endl;
+            break;
+        case '-':
+            ergebnisBruch = wert1Bruch - wert2Bruch;
+            ergebnisBruch.kuerze();
+            cout << wert1string << " - " << wert2string << " = " << ergebnisBruch.getBruch() << endl;
+            break;
+        case '*':
+            ergebnisBruch = wert1Bruch * wert2Bruch;
+            ergebnisBruch.kuerze();
+            cout << wert1string << " * " << wert2string << " = " << ergebnisBruch.getBruch() << endl;
+            break;
+        case '/':
+            ergebnisBruch = wert1Bruch / wert2Bruch;
+            ergebnisBruch.kuerze();
+            cout << wert1string << " / " << wert2string << " = " << ergebnisBruch.getBruch() << endl;
+            break;
+        case 'e':
+        case 'E':
+            return 0;
+        default:
+            cout << endl << "Ungueltig!!";
+            break;
+        }
+    }
+
+
+
+
 }
